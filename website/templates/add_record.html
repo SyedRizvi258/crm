@@ -3,18 +3,18 @@
 
 <div class="col-md-6 offset-md-3">
 
-<h1>Add Record</h1>
-<br/>
+    <h1>Add Record</h1>
+    <br/>
 
-<form method="POST" action="{% url 'add_record' %}">
-    {% csrf_token %}
+    <form method="POST" action="{% url 'add_record' %}">
+        {% csrf_token %}
 
-    {{ form.as_p }}
+        {{ form.as_p }}
 
-<br/>
-    <button type="submit" class="btn btn-secondary">Add Record</button>
-    <a href="{% url 'home' %}" class="btn btn-secondary"> Back </a>
-</form>
+    <br/>
+        <button type="submit" class="btn btn-secondary">Add Record</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary"> Back </a>
+    </form>
 
 
 {% endblock %}

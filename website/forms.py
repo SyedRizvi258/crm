@@ -4,6 +4,8 @@ from django import forms
 from .models import Record
 
 class SignUpForm(UserCreationForm):
+    """Form for user registration with additional fields for first and last name."""
+
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
     first_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'First Name'}))
     last_name = forms.CharField(label="",max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Last Name'}))
@@ -14,6 +16,7 @@ class SignUpForm(UserCreationForm):
 
 
     def __init__(self, *args, **kwargs):
+        """Customize the initialization of form fields."""
         super(SignUpForm, self).__init__(*args, **kwargs)
 
         self.fields['username'].widget.attrs['class'] = 'form-control'
@@ -33,6 +36,8 @@ class SignUpForm(UserCreationForm):
 
 
 class AddRecordForm(forms.ModelForm):
+    """Form for adding a new record with fields for user input."""
+    
     first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
     last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
     email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email", "class":"form-control"}), label="")
