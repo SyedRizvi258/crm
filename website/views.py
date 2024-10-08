@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
+from django.http import JsonResponse
+from django.db import connection
 
 # View to render the home page and handle user login
 def home(request):
@@ -108,6 +110,11 @@ def update_record(request, pk):
         messages.success(request, "You Must Be Logged In To Update Records...")
         return redirect('home') # Redirect to login page if user is not authenticated
 
+def keep_alive(request):
+    # A simple query to wake up the database
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT 1;")
+    return JsonResponse({"status": "Database is alive"})
 
 
 
