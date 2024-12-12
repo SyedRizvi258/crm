@@ -1,19 +1,3 @@
-'''import mysql.connector
-from decouple import config
-
-dataBase = mysql.connector.connect(
-    host = config('DB_HOST'),
-    user = config('DB_USER'),
-    passwd = config('DB_PASSWORD')
-)
-
-# prepare a cursor object
-cursorObject = dataBase.cursor()
-
-# create a database
-cursorObject.execute("CREATE DATABASE db")
-print("All Done!")'''
-
 import psycopg2
 from decouple import config
 
@@ -27,7 +11,7 @@ dataBase = psycopg2.connect(
 # Create a cursor object
 cursorObject = dataBase.cursor()
 
-# Create a database (PostgreSQL requires the database to be created within a specific connection)
+# Create a database
 cursorObject.execute("CREATE DATABASE db")
 
 # Commit the changes
